@@ -1,8 +1,72 @@
-html{
+html {
   margin: 0;
   padding: 0;
 }
 
-body{
+body {
   background: #9a9a9a;
+}
+button {
+  background-color: rgb(219, 240, 137);
+  border-radius: 10px;
+  height: 40px;
+  width: 80px;
+}
+button:focus{
+  outline: none;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+.controls {
+  padding: 10px;
+  font-family: 'Press Start 2P', cursive;
+  color: rgb(228, 117, 14);
+}
+.screen{
+  background-color: rgb(94, 16, 16);
+  border-radius: 5px;
+  padding: 1px;
+  display: flex;
+}
+#count {
+  margin-left: auto;
+}
+
+.game {
+  display: flex;
+  justify-content: space-around;
+}
+#red {
+  background-color: rgb(195, 45, 45);
+  min-height:220px;
+  min-width:220px;
+  cursor: pointer;
+  border-top-left-radius: 100%;
+}
+#green {
+  background-color: rgb(45, 195, 45);
+  min-height:220px;
+  min-width:220px;
+  cursor: pointer;
+  border-top-right-radius: 100%;
+}
+#blue {
+  background-color: rgb(75, 98, 195);
+  min-height:220px;
+  min-width:220px;
+  cursor: pointer;
+  border-bottom-right-radius: 100%;
+}
+#yellow {
+  background-color: rgb(176, 196, 49);
+  min-height:220px;
+  min-width:220px;
+  cursor: pointer;
+  border-bottom-left-radius: 100%;
 }

@@ -2,10 +2,24 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
     <title>Play Simon</title>
   </head>
   <body>
+    <div class="container">
+      <div class="controls">
+        <div class="screen"><p id="count">COUNT</p></div>
+        <button id="start">start</button><button id="hard">hard</button>
+      </div>
+      <div class="game">
+        <a href="#" id="redSquare"><div id="red"></div></a>
+        <a href="#" id="greenSquare"><div id="green"></div></a>
+      </div><div class="game">
+        <a href="#" id="yellowSquare"><div id="yellow"></div></a>
+        <a href="#" id="blueSquare"><div id="blue"></div></a>
+      </div>
+    </div>
 
 
   <script src="index.js"></script>
