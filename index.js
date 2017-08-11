@@ -20,6 +20,7 @@ const redAct = () => {
   setTimeout(() => {document.getElementById('red').style = 'background-color: rgb(195, 45, 45)'}, 250);
   displayCount.innerHTML = count;
   console.log('red');
+  return;
 }
 const blueAct = () =>{
   blueSound.currentTime = 0;
@@ -28,6 +29,7 @@ const blueAct = () =>{
   setTimeout(() => {document.getElementById('blue').style = 'background-color: rgb(75, 98, 195)'}, 250);
   displayCount.innerHTML = count;
   console.log('blue');
+  return;
 }
 const greenAct = () =>{
   greenSound.currentTime = 0;
@@ -36,6 +38,7 @@ const greenAct = () =>{
   setTimeout(() => {document.getElementById('green').style = 'background-color: rgb(45, 195, 45)'}, 250);
   displayCount.innerHTML = count;
   console.log('green');
+  return;
 }
 const yellowAct = () =>{
   yellowSound.currentTime = 0;
@@ -44,6 +47,7 @@ const yellowAct = () =>{
   setTimeout(() => {document.getElementById('yellow').style = 'background-color: rgb(182, 214, 55)'}, 250);
   displayCount.innerHTML = count;
   console.log('yellow');
+  return;
 }
 
 const strictMode = () => {
@@ -58,62 +62,61 @@ const strictMode = () => {
 
 let gameArr = [];
 let count = 1;
-let move = 8;
-let turn = null;
+let move = 20;
 
 const startGame = () => {
   count = 1;
-  gameArr = [];
-  displayCount.innerHTML = 'STARTING';
   for(let i = 0; i < 20; i++){
     let rnd = Math.floor(Math.random() * 5);
     gameArr.splice(i, 0, rnd);
   }
   turnInit();
-}
-
-const turnInit = () => {
-
-  if(move > 0){
-    compMove(move);
-    turn = 'player';
-    return;
-  }
-  copyMove();
   return;
 }
 
-const compMove = () => {
-  let delay = 500;
-  if(count > 5){delay = 400};
-  if(count > 9){delay = 300};
-  if(count > 13){delay = 200};
+const turnInit = () => {
+  if(move > 0){
+    clearTimeout();
+    compMove();
+    return;
+  }else{
+    copyMove();
+    return;
+ }
+}
 
-  if(gameArr[move - 1] === 1){
+const compMove = () => {
+  move = move - 1;
+  if(gameArr[move] === 1){
     redAct();
-    move = move - 1;
-    setTimeout(() => turnInit(), delay);
+    setTimeout(() => turnInit(), 400);
+    return;
+
   }
-  if(gameArr[move - 1] === 2){
+  if(gameArr[move] === 2){
     blueAct();
-    move = move - 1;
-    setTimeout(() => turnInit(), delay);
+    setTimeout(() => turnInit(), 400);
+    return;
+
   }
-  if(gameArr[move - 1] === 3){
+  if(gameArr[move] === 3){
     yellowAct();
-    move = move - 1;
-    setTimeout(() => turnInit(), delay);
+    setTimeout(() => turnInit(), 400);
+    return;
+
   }
-  if(gameArr[move - 1] === 4){
+  if(gameArr[move] === 4){
     greenAct();
-    move = move - 1;
-    setTimeout(() => turnInit(), delay);
+    setTimeout(() => turnInit(), 400);
+    return;
+
   }
 
 }
 
 const copyMove = () => {
   console.log('human move')
+  return;
 }
 
 window.redSquare.addEventListener('click', () => redAct());
