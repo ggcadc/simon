@@ -11,8 +11,7 @@ const blueSound = new Audio('./simonSound2.mp3');
 const greenSound = new Audio('./simonSound3.mp3');
 const yellowSound = new Audio('./simonSound4.mp3');
 
-let strict = false;
-
+//Button interactions and animations
 const redAct = () => {
   redSound.currentTime = 0;
   redSound.play();
@@ -42,71 +41,81 @@ const yellowAct = () =>{
   displayCount.innerHTML = count;
 }
 
+let strict = false;
+
 const strictMode = () => {
   if(!strict){
     strict = true;
     strictButton.style = 'background-color: rgb(255, 244, 185); color: red';
     return;
   }
-  strict = false;
   strictButton.style = 'background-color: rgb(219, 240, 137)';
 }
 
 let gameArr = [];
-let count = 1;
-let move = 7;
+let count = 7;
+var move = 1;
 
-const createGameArr = () => {
-  for(let i = 0; i < 20; i++){
-    let rnd = Math.floor(Math.random() * 5);
-    gameArr.splice(i, 0, rnd);
-    }
-}
-
-const startGame = () => {
-  createGameArr();
-  count = 1;
-  turnInit();
+const delayTones = () => {
+   let nextRun = window.setTimeout(() => turnInit(), 750);
 }
 
 const turnInit = () => {
-  if(move > 0){
-    setTimeout(() => compMove(), 500);
-  }else{
-    copyMove();
+  console.log(move)
+  if(move <= count){
+    if(gameArr[move] === 0){
+      redAct();
+      move = move + 1;
+      if(move > 0){
+      delayTones();
+      return;
+      }
+    }
+    if(gameArr[move] === 1){
+      blueAct();
+      move = move + 1;
+      if(move > 0){
+      delayTones();
+      return;
+      }
+    }
+    if(gameArr[move] === 2){
+      yellowAct();
+      move = move + 1;
+      if(move > 0){
+      delayTones();
+      return;
+      }
+    }
+    if(gameArr[move] === 3){
+      greenAct();
+      move = move + 1;
+      if(move > 0){
+      delayTones();
+      return;
+      }
+    }
+  }
+  if(move > count){
+  copyMove();
+  return
  }
-}
-
-const compMove = () => {
-  if(gameArr[move] === 1){
-    redAct();
-    move = move - 1;
-    turnInit();
-
-  }
-  if(gameArr[move] === 2){
-    blueAct();
-    move = move - 1;
-    turnInit();
-
-  }
-  if(gameArr[move] === 3){
-    yellowAct();
-    move = move - 1;
-    turnInit();
-
-  }
-  if(gameArr[move] === 4){
-    greenAct();
-    move = move - 1;
-    turnInit();
-
-  }
-
 }
 
 const copyMove = () => {
   console.log('human move')
+}
+
+const startGame = () => {
+  createGameArr();
+  count = 10;
+  turnInit();
+}
+const createGameArr = () => {
+  for(let i = 0; i < 20; i++){
+    let rnd = Math.floor(Math.random() * 4);
+    gameArr.splice(i, 0, rnd);
+    }
 }
 
 window.redSquare.addEventListener('click', () => redAct());
