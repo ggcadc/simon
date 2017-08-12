@@ -53,11 +53,15 @@ const strictMode = () => {
 }
 
 let gameArr = [];
-let count = 7;
+let count = 14;
 var move = 1;
 
 const delayTones = () => {
-   let nextRun = window.setTimeout(() => turnInit(), 750);
+  let delay = 750;
+  if(count > 5){delay = 700};
+  if(count > 9){delay = 500};
+  if(count > 13){delay = 400};
+  let nextRun = window.setTimeout(() => turnInit(), delay);
 }
 
 const turnInit = () => {
@@ -108,7 +112,7 @@ const copyMove = () => {
 
 const startGame = () => {
   createGameArr();
-  count = 10;
+  count = 3;
   turnInit();
 }
 const createGameArr = () => {
